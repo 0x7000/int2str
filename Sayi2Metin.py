@@ -14,7 +14,8 @@ class Sayi2Metin:
 		else:
 			return "{}".format(self.cevir(self.sayi))
 
-	def cevir(self, sayi):
+	@staticmethod
+	def cevir(sayi):
 		if len(sayi) == 1 and sayi == "0":
 				return "Sıfır"
 		else:
