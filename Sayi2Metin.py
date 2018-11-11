@@ -17,7 +17,7 @@ class Sayi2Metin:
 	@staticmethod
 	def cevir(sayi):
 		if len(sayi) == 1 and sayi == "0":
-				return "Sıfır"
+			return "Sıfır"
 		else:
 			sayi = sayi.lstrip("0")
 			dizi = []
