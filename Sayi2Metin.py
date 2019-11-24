@@ -3,17 +3,18 @@ class Cevir:
 		self.sayi = sayi
 
 	def __del__(self):
-		print("...")
+		print("obje silindi...")
 
 	@property
 	def yaz(self):
 		if "," in self.sayi:
 			self.sayi = self.sayi.split(",")
-			kurus = self.sayi[1][0:2]
-			if kurus.startswith("0"):
-				return "{}, {} {}".format(self.cevir(self.sayi[0]), "Sıfır", self.cevir(kurus[1]))
-			else:
-				return "{}, {}".format(self.cevir(self.sayi[0]), self.cevir(kurus))
+			if len(self.sayi[1]) >= 2:
+				kurus = self.sayi[1][0:2]
+				if kurus.startswith("0"):
+					return "{}, {} {}".format(self.cevir(self.sayi[0]), "Sıfır", self.cevir(kurus[1]))
+				else:
+					return "{}, {}".format(self.cevir(self.sayi[0]), self.cevir(kurus))
 		else:
 			return "{}".format(self.cevir(self.sayi))
 
