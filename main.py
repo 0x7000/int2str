@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from Sayi2Metin import Cevir
-from tkinter import *
+from tkinter import Tk,Label,Entry,Button,END
 
 
 def main():
@@ -14,7 +14,7 @@ def hesapla():
 
 
 Pencere = Tk()
-Pencere.title("Sayı2Metin")
+Pencere.title("Sayı > Metin")
 xlabel = Label(Pencere, text="Sayı Girişi : ")
 xlabel.place(x=10, y=10)
 xlabel2 = Label(Pencere, text="Sonuç : ")
@@ -25,6 +25,7 @@ xbuton = Button(Pencere, text="Yazdır.", command=hesapla)
 xbuton.bind_all("<Return>", lambda x: hesapla())
 xbuton.place(x=10, y=30)
 xbuton2 = Button(Pencere, text="Sil.", command=lambda: xinput.delete(0, END))
+xbuton2.bind_all("<Delete>",lambda x: xinput.delete(0, END))
 xbuton2.place(x=10, y=60)
 
 
