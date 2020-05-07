@@ -9,19 +9,19 @@ def main():
 
 
 def hesapla():
-	text = xinput.get()
-	if len(text) == 7:
-		milyon = Cevir(text[0])
-		yuzbin = Cevir(text[1:])
+	veri = xinput.get()
+	if len(veri) == 7:
+		milyon = Cevir(veri[0])
+		yuzbin = Cevir(veri[1:])
 		x, y = milyon.yaz, yuzbin.yaz
-		xlabel2.config(text=x+" Milyon. "+y)
-	elif len(text) == 8:
-		milyon = Cevir(text[:2])
-		yuzbin = Cevir(text[2:])
+		xlabel2.config(text=x + " Milyon. " + y)
+	elif len(veri) == 8:
+		milyon = Cevir(veri[:2])
+		yuzbin = Cevir(veri[2:])
 		x, y = milyon.yaz, yuzbin.yaz
 		xlabel2.config(text=x + " Milyon " + y)
 	else:
-		sonuc = Cevir(text)
+		sonuc = Cevir(veri)
 		xlabel2.config(text=sonuc.yaz)
 
 
