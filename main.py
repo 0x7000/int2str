@@ -10,10 +10,10 @@ def main():
 
 def hesapla():
 	veri = xinput.get()
-	if len(veri) == 6:
+	if len(veri) <= 6:
 		sonuc = Cevir(veri)
 		xlabel2.config(text=sonuc.yaz)
-	if len(veri) == 7:
+	elif len(veri) == 7:
 		milyon = Cevir(veri[0])
 		yuzbin = Cevir(veri[1:])
 		x, y = milyon.yaz, yuzbin.yaz
@@ -24,7 +24,7 @@ def hesapla():
 		x, y = milyon.yaz, yuzbin.yaz
 		xlabel2.config(text=x + " Milyon " + y)
 	else:
-		xlabel2.config(text="6, 7 Veya 8 Basamaklı sayı girin.")
+		xlabel2.config(text="Sekiz basamaktan büyük sayı girdiniz.")
 
 
 Pencere = Tk()
