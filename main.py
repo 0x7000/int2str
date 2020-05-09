@@ -4,7 +4,7 @@ from tkinter import Tk, Label, Entry, Button, END
 
 
 def main():
-	Pencere.geometry("450x250+10+10")
+	Pencere.geometry("780x280+10+10")
 	Pencere.mainloop()
 
 
@@ -25,8 +25,13 @@ def hesapla():
 		yuzbin = Cevir(veri[2:])
 		x, y = milyon.yaz, yuzbin.yaz
 		xlabel2.config(text=x + " Milyon " + y)
+	elif len(veri) == 9:
+		milyon = Cevir(veri[:3])
+		yuzbin = Cevir(veri[3:])
+		x, y = milyon.yaz, yuzbin.yaz
+		xlabel2.config(text=x + " Milyon " + y)
 	else:
-		xlabel2.config(text="Sekiz basamaktan büyük sayı girdiniz.")
+		xlabel2.config(text="Dokuz basamaktan büyük sayı girdiniz.")
 
 
 Pencere = Tk()
