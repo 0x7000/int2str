@@ -9,7 +9,9 @@ def main():
 
 
 def hesapla():
-	veri = xinput.get()
+	veri = str(xinput.get())
+	if veri.isnumeric():
+		veri = veri.lstrip("0")
 	if len(veri) <= 6:
 		sonuc = Cevir(veri)
 		xlabel2.config(text=sonuc.yaz)
