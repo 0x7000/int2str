@@ -10,28 +10,8 @@ def main():
 
 def hesapla():
 	veri = str(xinput.get())
-	if veri.isnumeric():
-		veri = veri.lstrip("0")
-	if len(veri) <= 6:
-		sonuc = Cevir(veri)
-		xlabel2.config(text=sonuc.yaz)
-	elif len(veri) == 7:
-		milyon = Cevir(veri[0])
-		yuzbin = Cevir(veri[1:])
-		x, y = milyon.yaz, yuzbin.yaz
-		xlabel2.config(text=x + " Milyon. " + y)
-	elif len(veri) == 8:
-		milyon = Cevir(veri[:2])
-		yuzbin = Cevir(veri[2:])
-		x, y = milyon.yaz, yuzbin.yaz
-		xlabel2.config(text=x + " Milyon " + y)
-	elif len(veri) == 9:
-		milyon = Cevir(veri[:3])
-		yuzbin = Cevir(veri[3:])
-		x, y = milyon.yaz, yuzbin.yaz
-		xlabel2.config(text=x + " Milyon " + y)
-	else:
-		xlabel2.config(text="Dokuz basamaktan büyük sayı girdiniz.")
+	sonuc = Cevir(veri)
+	xlabel2.config(text=sonuc.yaz)
 
 
 Pencere = Tk()

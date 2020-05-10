@@ -9,17 +9,36 @@ class Cevir:
 	def yaz(self):
 		if "," in self.sayi:
 			self.sayi = self.sayi.split(",")
+			anapara = self.sayi[0]
 			if len(self.sayi[1]) >= 2:
 				kurus = self.sayi[1][0:2]
 			else:
 				kurus = self.sayi[1]
-			
-			if kurus.startswith("0") and len(kurus) >= 2:
-				return "{}, {} {}".format(self.cevir(self.sayi[0]), "Sıfır", self.cevir(kurus[1]))
+
+			if kurus.startswith("0") and len(kurus) == 2:
+				kurus = "{} {}".format("Sıfır", self.cevir(kurus[1]))
 			else:
-				return "{}, {}".format(self.cevir(self.sayi[0]), self.cevir(kurus))
+				kurus = "{}".format(self.cevir(kurus))
 		else:
-			return "{}".format(self.cevir(self.sayi))
+			anapara = self.sayi
+			kurus = BIRLER["0"]
+
+		if len(anapara) <= 6:
+			return "{}, {}".format(self.cevir(anapara), kurus).rstrip(", ")
+		elif len(anapara) == 7:
+			milyon = anapara[0]
+			yuzbin = anapara[1:]
+			return "{} Milyon {}, {}".format(self.cevir(milyon), self.cevir(yuzbin), kurus).rstrip(", ")
+		elif len(anapara) == 8:
+			milyon = anapara[:2]
+			yuzbin = anapara[2:]
+			return "{} Milyon {}, {}".format(self.cevir(milyon), self.cevir(yuzbin), kurus).rstrip(", ")
+		elif len(anapara) == 9:
+			milyon = anapara[:3]
+			yuzbin = anapara[3:]
+			return "{} Milyon {}, {}".format(self.cevir(milyon), self.cevir(yuzbin), kurus).rstrip(", ")
+		else:
+			return "9 haneden büyük sayı girişi yapıldı."
 
 	@staticmethod
 	def cevir(deger):
@@ -40,14 +59,9 @@ class Cevir:
 				if basamak == 1:
 					sonuc = "{}".format(BIRLER[dizi[0]])
 				elif basamak == 2:
-					sonuc = "{} {}".format(
-						ONLAR[dizi[1]],
-						BIRLER[dizi[0]])
+					sonuc = "{} {}".format(ONLAR[dizi[1]], BIRLER[dizi[0]])
 				elif basamak == 3:
-					sonuc = "{} {} {}".format(
-						YUZLER[dizi[2]],
-						ONLAR[dizi[1]],
-						BIRLER[dizi[0]])
+					sonuc = "{} {} {}".format(YUZLER[dizi[2]], ONLAR[dizi[1]], BIRLER[dizi[0]])
 				elif basamak == 4:
 					sonuc = "{} {} {} {}".format(
 						BINLER[dizi[3]],
