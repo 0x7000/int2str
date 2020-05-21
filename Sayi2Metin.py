@@ -43,68 +43,71 @@ class Cevir:
 	@staticmethod
 	def cevir(deger):
 		if len(deger) == 1 and deger == "0":
-			return "Sıfır"
+			return BIRLER[deger]
 		else:
 			deger = deger.lstrip("0")
-			dizi = []
-			isaret = "+"
-			try:
-				for i in deger:
-					dizi.append(i)
-				if dizi[0] == "-":
-					isaret = "Eksi"
-					dizi.pop(0)
-				dizi.reverse()
-				basamak = len(dizi)
-				if basamak == 1:
-					sonuc = "{}".format(BIRLER[dizi[0]])
-				elif basamak == 2:
-					sonuc = "{} {}".format(ONLAR[dizi[1]], BIRLER[dizi[0]])
-				elif basamak == 3:
-					sonuc = "{} {} {}".format(YUZLER[dizi[2]], ONLAR[dizi[1]], BIRLER[dizi[0]])
-				elif basamak == 4:
-					sonuc = "{} {} {} {}".format(
-						BINLER[dizi[3]],
-						YUZLER[dizi[2]],
-						ONLAR[dizi[1]],
-						BIRLER[dizi[0]])
-				elif basamak == 5:
-					if dizi[3] == "0":
+			if len(deger) == 0:
+				return " "
+			else:
+				dizi = []
+				isaret = "+"
+				try:
+					for i in deger:
+						dizi.append(i)
+					if dizi[0] == "-":
+						isaret = "Eksi"
+						dizi.pop(0)
+					dizi.reverse()
+					basamak = len(dizi)
+					if basamak == 1:
+						sonuc = "{}".format(BIRLER[dizi[0]])
+					elif basamak == 2:
+						sonuc = "{} {}".format(ONLAR[dizi[1]], BIRLER[dizi[0]])
+					elif basamak == 3:
+						sonuc = "{} {} {}".format(YUZLER[dizi[2]], ONLAR[dizi[1]], BIRLER[dizi[0]])
+					elif basamak == 4:
 						sonuc = "{} {} {} {}".format(
-							ONLAR[dizi[4]]+" Bin",
+							BINLER[dizi[3]],
 							YUZLER[dizi[2]],
 							ONLAR[dizi[1]],
 							BIRLER[dizi[0]])
+					elif basamak == 5:
+						if dizi[3] == "0":
+							sonuc = "{} {} {} {}".format(
+								ONLAR[dizi[4]]+" Bin",
+								YUZLER[dizi[2]],
+								ONLAR[dizi[1]],
+								BIRLER[dizi[0]])
+						else:
+							sonuc = "{} {} {} {} {}".format(
+								ONLAR[dizi[4]],
+								BIRLER[dizi[3]]+" Bin",
+								YUZLER[dizi[2]],
+								ONLAR[dizi[1]],
+								BIRLER[dizi[0]])
+					elif basamak == 6:
+						if dizi[3] == "0":
+							sonuc = "{} {} {} {} {}".format(
+								YUZLER[dizi[5]],
+								ONLAR[dizi[4]]+" Bin",
+								YUZLER[dizi[2]],
+								ONLAR[dizi[1]],
+								BIRLER[dizi[0]])
+						else:
+							sonuc = "{} {} {} {} {} {}".format(
+								YUZLER[dizi[5]],
+								ONLAR[dizi[4]],
+								BIRLER[dizi[3]]+" Bin",
+								YUZLER[dizi[2]],
+								ONLAR[dizi[1]],
+								BIRLER[dizi[0]])
 					else:
-						sonuc = "{} {} {} {} {}".format(
-							ONLAR[dizi[4]],
-							BIRLER[dizi[3]]+" Bin",
-							YUZLER[dizi[2]],
-							ONLAR[dizi[1]],
-							BIRLER[dizi[0]])
-				elif basamak == 6:
-					if dizi[3] == "0":
-						sonuc = "{} {} {} {} {}".format(
-							YUZLER[dizi[5]],
-							ONLAR[dizi[4]]+" Bin",
-							YUZLER[dizi[2]],
-							ONLAR[dizi[1]],
-							BIRLER[dizi[0]])
-					else:
-						sonuc = "{} {} {} {} {} {}".format(
-							YUZLER[dizi[5]],
-							ONLAR[dizi[4]],
-							BIRLER[dizi[3]]+" Bin",
-							YUZLER[dizi[2]],
-							ONLAR[dizi[1]],
-							BIRLER[dizi[0]])
-				else:
-					sonuc = "Aralık Dışında."
-				if isaret == "Eksi":
-					sonuc = "{} {}".format(isaret, sonuc.replace("  ", "").strip())
-				return sonuc.replace("  ", "").strip()
-			except Exception as e:
-				return "Hata: {}".format(e)
+						sonuc = "Aralık Dışında."
+					if isaret == "Eksi":
+						sonuc = "{} {}".format(isaret, sonuc.replace("  ", "").strip())
+					return sonuc.replace("  ", "").strip()
+				except Exception as e:
+					return "Hata: {}".format(e)
 
 
 BIRLER = {
