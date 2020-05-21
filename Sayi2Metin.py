@@ -38,7 +38,7 @@ class Cevir:
 			yuzbin = anapara[3:]
 			return "{} Milyon {}, {}".format(self.cevir(milyon), self.cevir(yuzbin), kurus).rstrip(", ")
 		else:
-			return "9 haneden büyük sayı girişi yapıldı."
+			return "Aralık dışında ( 9 hane )"
 
 	@staticmethod
 	def cevir(deger):
@@ -50,13 +50,9 @@ class Cevir:
 				return " "
 			else:
 				dizi = []
-				isaret = "+"
 				try:
 					for i in deger:
 						dizi.append(i)
-					if dizi[0] == "-":
-						isaret = "Eksi"
-						dizi.pop(0)
 					dizi.reverse()
 					basamak = len(dizi)
 					if basamak == 1:
@@ -103,8 +99,6 @@ class Cevir:
 								BIRLER[dizi[0]])
 					else:
 						sonuc = "Aralık Dışında."
-					if isaret == "Eksi":
-						sonuc = "{} {}".format(isaret, sonuc.replace("  ", "").strip())
 					return sonuc.replace("  ", "").strip()
 				except Exception as e:
 					return "Hata: {}".format(e)
