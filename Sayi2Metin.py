@@ -3,7 +3,8 @@ class Cevir:
 		self.sayi = sayi
 
 	def __del__(self):
-		print("obje silindi...")
+		pass
+		# print("nesne silindi.")
 
 	@property
 	def yaz(self):
@@ -18,7 +19,11 @@ class Cevir:
 			if kurus.startswith("0") and len(kurus) == 2:
 				kurus = "{} {}".format("Sıfır", self.cevir(kurus[1]))
 			else:
-				kurus = "{}".format(self.cevir(kurus))
+				if len(kurus) == 1:
+					kurus += "0"  # 12,9 için on iki, doksan
+					kurus = "{}".format(self.cevir(kurus))
+				else:
+					kurus = "{}".format(self.cevir(kurus))
 		else:
 			anapara = self.sayi
 			kurus = BIRLER["0"]
